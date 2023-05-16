@@ -142,8 +142,8 @@ Prior to your first deployment, you'll need to do a few things:
 - Create two apps on Fly, one for staging and one for production:
 
   ```sh
-  fly apps create remixbox-adac
-  fly apps create remixbox-adac-staging
+  fly apps create remixbox
+  fly apps create remixbox-staging
   ```
 
   > **Note:** Make sure this name matches the `app` set in your `fly.toml` file.
@@ -172,8 +172,8 @@ Prior to your first deployment, you'll need to do a few things:
   your fly app secrets, to do this you can run the following commands:
 
   ```sh
-  fly secrets set SESSION_SECRET=$(openssl rand -hex 32) ENCRYPTION_SECRET=$(openssl rand -hex 32) INTERNAL_COMMAND_TOKEN=$(openssl rand -hex 32) --app remixbox-adac
-  fly secrets set SESSION_SECRET=$(openssl rand -hex 32) ENCRYPTION_SECRET=$(openssl rand -hex 32) INTERNAL_COMMAND_TOKEN=$(openssl rand -hex 32) --app remixbox-adac-staging
+  fly secrets set SESSION_SECRET=$(openssl rand -hex 32) ENCRYPTION_SECRET=$(openssl rand -hex 32) INTERNAL_COMMAND_TOKEN=$(openssl rand -hex 32) --app remixbox
+  fly secrets set SESSION_SECRET=$(openssl rand -hex 32) ENCRYPTION_SECRET=$(openssl rand -hex 32) INTERNAL_COMMAND_TOKEN=$(openssl rand -hex 32) --app remixbox-staging
   ```
 
   If you don't have openssl installed, you can also use
@@ -193,8 +193,8 @@ Prior to your first deployment, you'll need to do a few things:
   and staging:
 
   ```sh
-  fly secrets set MAILGUN_DOMAIN="mg.example.com" MAILGUN_SENDING_KEY="some-api-token-with-dashes" --app remixbox-adac
-  fly secrets set MAILGUN_DOMAIN="mg.example.com" MAILGUN_SENDING_KEY="some-api-token-with-dashes" --app remixbox-adac-staging
+  fly secrets set MAILGUN_DOMAIN="mg.example.com" MAILGUN_SENDING_KEY="some-api-token-with-dashes" --app remixbox
+  fly secrets set MAILGUN_DOMAIN="mg.example.com" MAILGUN_SENDING_KEY="some-api-token-with-dashes" --app remixbox-staging
   ```
 
 - Create a persistent volume for the sqlite database for both your staging and
@@ -202,8 +202,8 @@ Prior to your first deployment, you'll need to do a few things:
   based on your needs):
 
   ```sh
-  fly volumes create data --size 1 --app remixbox-adac
-  fly volumes create data --size 1 --app remixbox-adac-staging
+  fly volumes create data --size 1 --app remixbox
+  fly volumes create data --size 1 --app remixbox-staging
   ```
 
 Now that everything is set up you can commit and push your changes to your repo.
